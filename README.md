@@ -114,62 +114,20 @@ Classify severity ('low', 'medium', 'high'), verify authenticity confidence, pro
 
 ## 📸 Screenshots of SafeRoute in Action
 
-### 1. Home Dashboard & AI Safety Risk Meter
-```text
-+-------------------------------------------------------------------+
-|  🛡️ SafeRoute PWA                  [Mic: Active]  [SOS]  [🔔 2]   |
-+-------------------------------------------------------------------+
-|  ✨ AI REAL-TIME PROTECTION                                       |
-|  Hello, Traveler 👋                                               |
-|  +-------------------------------------------------------------+  |
-|  |  🛡️ AI Protection Score                 [ 94 / 100 ]         |  |
-|  |  🟢 Safe Environment • 96% Street Illumination               |  |
-|  |  ✓ Stay on main illuminated avenues                         |  |
-|  |  ✓ Secret voice keyword active ("Emergency Help")           |  |
-|  +-------------------------------------------------------------+  |
-|                                                                   |
-|  [ ⚡ PRESS FOR EMERGENCY SOS - Instant Dispatch & Siren ]        |
-+-------------------------------------------------------------------+
-```
+### 1. Home Dashboard & AI Protection Score Meter
+![Home Dashboard & AI Protection Meter](./public/GIyzlr.png)
 
-### 2. Smart AI Safe Route Planner with Real Road Paths
-```text
-+-------------------------------------------------------------------+
-|  ✨ AI Safe Route Generator                                       |
-|  📍 Starting Point: [ Current Location (Times Square, NY) ]       |
-|  ↕️ Swap Locations                                                |
-|  🎯 Destination:    [ Central Park, New York              ]       |
-|                                                                   |
-|  [ 🧭 Calculate AI Safe Routes ]                                  |
-+-------------------------------------------------------------------+
-|  AI RECOMMENDED PATHS:                                            |
-|  ★ SAFEST AI PICK                                94% Safety Rating|
-|  Safest AI Route (Main Lit Avenues)                               |
-|  👣 2.4 km  •  ⏱️ 28 mins walk                                    |
-|  Lit Streets: 96%  •  Crime Density: Low  •  Police: 2 Nearby     |
-|  AI Insight: 96% lamp illumination, verified CCTV coverage.       |
-|                                                                   |
-|  [ 🏁 Start Journey on "Safest AI Route" ]                       |
-+-------------------------------------------------------------------+
-```
+### 2. AI Safe Route Planner with Real Road Paths
+![AI Safe Route Planner](./public/SAhJig.png)
 
 ### 3. Interactive Safety Map with Start & Destination Pins
-```text
-+-------------------------------------------------------------------+
-|  📍 Interactive Safety Map                                        |
-|  +-------------------------------------------------------------+  |
-|  |  [All Pins]  [🛡️ Police]  [🏥 Hospitals]  [⚠️ Unsafe Spots] |  |
-|  |                                                             |  |
-|  |       🏁 (S) Start Pin           🔵 Police Station          |  |
-|  |         \                                                   |  |
-|  |          ================== (Green Route Polyline)          |  |
-|  |                            \                                |  |
-|  |                             🎯 (D) Destination Pin          |  |
-|  |                                                             |  |
-|  |  [Layers]                             [➕ Report] [📍 Center]|  |
-|  +-------------------------------------------------------------+  |
-+-------------------------------------------------------------------+
-```
+![Interactive Safety Map](./public/ZcAInF.png)
+
+### 4. Emergency SOS Guard & 1-Tap Alert Dispatch
+![Emergency SOS Guard](./public/BuRMUT.png)
+
+### 5. Community Unsafe Area Reporter & Category Filters
+![Community Unsafe Spot Reporter](./public/SiPLPQ.png)
 
 ---
 
