@@ -1,0 +1,6 @@
+{
+  "name": "SafeRoute",
+  "description": "AI-Powered Women's Safety App with real-time GPS tracking, safe route planning, emergency SOS, community hazard reporting, and emergency contact alerts.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

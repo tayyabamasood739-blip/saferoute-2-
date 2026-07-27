@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 20px rgba(109, 40, 217, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0);
+  }
+}
+
+@keyframes pulse-danger {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.8);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 25px rgba(225, 29, 72, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+.animate-pulse-danger {
+  animation: pulse-danger 1.5s infinite;
+}
+
+/* Custom Leaflet Map styling tweaks */
+.leaflet-container {
+  background-color: #0f172a !important;
+  font-family: inherit;
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #1e1b4b !important;
+  color: #f1f5f9 !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #4338ca !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-tip {
+  background: #1e1b4b !important;
+}
+
