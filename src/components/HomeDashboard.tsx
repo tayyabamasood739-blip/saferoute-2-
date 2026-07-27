@@ -49,9 +49,11 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
             isWalkingAlone: true,
           }),
         });
-        const data = await res.json();
-        if (data && data.overallScore) {
-          setRiskData(data);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.overallScore) {
+            setRiskData(data);
+          }
         }
       } catch (err) {
         console.warn('Risk assessment error:', err);
