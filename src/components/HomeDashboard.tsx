@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Compass, MapPin, AlertTriangle, Users, Phone, Zap, Sparkles, Navigation, Volume2, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { UserProfile, TabType, ActiveTripState, RiskAssessmentData } from '../types';
+import { InstallAppBanner } from './InstallAppBanner';
 
 interface HomeDashboardProps {
   user: UserProfile;
@@ -67,6 +68,9 @@ export const HomeDashboard: React.FC<HomeDashboardProps> = ({
 
   return (
     <div className="space-y-6 pb-20">
+      
+      {/* Prominent PWA Install App Banner */}
+      <InstallAppBanner />
       
       {/* Hero Welcome & AI Safety Meter */}
       <div className="relative overflow-hidden glass-card-purple rounded-3xl p-6 text-white shadow-2xl glow-purple">
