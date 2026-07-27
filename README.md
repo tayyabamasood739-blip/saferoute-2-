@@ -1,7 +1,7 @@
 # 🛡️ SafeRoute – AI-Powered Women's Personal Safety & Intelligent Navigation System
 
-> **Live Deployed App URL:** [https://safety-app-phi.vercel.app/](https://safety-app-phi.vercel.app/)  
-> **GitHub Repository:** [https://github.com/muhammadali8901/safety-app](https://github.com/muhammadali8901/safety-app)  
+> **Live Deployed App URL:** [https://saferoute-2-one.vercel.app/](https://saferoute-2-one.vercel.app/)  
+> **GitHub Repository:** [https://github.com/tayyabamasood739-blip/saferoute-2-](https://github.com/tayyabamasood739-blip/saferoute-2-)  
 > **PWA App Install:** Open in any mobile or desktop browser and click **"Install App"**
 
 ---
@@ -24,7 +24,7 @@ SafeRoute generates three distinct real-world road paths (**Safest AI Route**, *
 
 ## 🔗 Live Deployed URL & Installation
 
-- **Public Live URL:** [https://safety-app-phi.vercel.app/](https://safety-app-phi.vercel.app/)
+- **Public Live URL:** [https://saferoute-2-one.vercel.app/](https://saferoute-2-one.vercel.app/)
 - **Progressive Web App (PWA):** Accessible on Android, iOS, Windows, and Mac. Users can click the prominent **"Install App"** button to install SafeRoute natively on their home screen or desktop taskbar.
 
 ---
@@ -181,7 +181,7 @@ Classify severity ('low', 'medium', 'high'), verify authenticity confidence, pro
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/muhammadali8901/safety-app.git
+git clone https://github.com/tayyabamasood739-blip/saferoute-2-.git
 cd safety-app
 ```
 
@@ -215,5 +215,5 @@ npx esbuild server.ts --bundle --platform=node --format=cjs --packages=external 
 
 - **App Name:** SafeRoute
 - **Author:** Muhammad Ali
-- **GitHub Repository:** [https://github.com/muhammadali8901/safety-app](https://github.com/muhammadali8901/safety-app)
-- **Live URL:** [https://safety-app-phi.vercel.app/](https://safety-app-phi.vercel.app/)
+- **GitHub Repository:** [https://github.com/tayyabamasood739-blip/saferoute-2-](https://github.com/tayyabamasood739-blip/saferoute-2-)
+- **Live URL:** [https://saferoute-2-one.vercel.app/](https://saferoute-2-one.vercel.app/)
