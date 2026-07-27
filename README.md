@@ -172,6 +172,6 @@ npx esbuild server.ts --bundle --platform=node --format=cjs --packages=external 
 ## 📜 License & Author
 
 - **App Name:** SafeRoute
-- **Author:** Muhammad Ali
+- **Author:** Tayyaba Masood
 - **GitHub Repository:** [https://github.com/tayyabamasood739-blip/saferoute-2-](https://github.com/tayyabamasood739-blip/saferoute-2-)
 - **Live URL:** [https://saferoute-2-one.vercel.app/](https://saferoute-2-one.vercel.app/)
