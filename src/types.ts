@@ -67,6 +67,8 @@ export interface RouteOption {
   stepInstructions: string[];
   aiRecommendationSummary: string;
   recommended: boolean;
+  originCoords?: [number, number];
+  destinationCoords?: [number, number];
 }
 
 export interface EmergencyService {

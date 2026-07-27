@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigation, MapPin, Shield, Zap, Sparkles, Compass, AlertTriangle, ArrowRight, CheckCircle2, Clock, Footprints, ShieldCheck, Share2 } from 'lucide-react';
+import { Navigation, MapPin, Shield, Zap, Sparkles, Compass, AlertTriangle, ArrowRight, CheckCircle2, Clock, Footprints, ShieldCheck, Share2, Locate, ArrowUpDown } from 'lucide-react';
 import { RouteOption, ActiveTripState } from '../types';
 
 interface SafeRoutePlannerProps {
@@ -19,13 +19,23 @@ export const SafeRoutePlanner: React.FC<SafeRoutePlannerProps> = ({
   activeTrip,
   onEndTrip,
 }) => {
-  const [origin, setOrigin] = useState("Current GPS Position (Market St)");
-  const [destination, setDestination] = useState("5th Avenue University Campus");
+  const [origin, setOrigin] = useState("Current Location");
+  const [destination, setDestination] = useState("Central Station");
   const [timeOfDay, setTimeOfDay] = useState<'day' | 'evening' | 'night'>('night');
   const [transportMode, setTransportMode] = useState<'walking' | 'transit' | 'driving'>('walking');
   const [isLoading, setIsLoading] = useState(false);
   const [routes, setRoutes] = useState<RouteOption[] | null>(null);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
+
+  const handleUseCurrentGps = () => {
+    setOrigin("Current Location");
+  };
+
+  const handleSwapLocations = () => {
+    const temp = origin;
+    setOrigin(destination);
+    setDestination(temp);
+  };
 
   const handleFetchRoutes = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,18 +129,39 @@ export const SafeRoutePlanner: React.FC<SafeRoutePlannerProps> = ({
         <div className="space-y-3">
           {/* Origin */}
           <div>
-            <label className="text-xs font-bold text-purple-300 uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Starting Point
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-emerald-400" /> Starting Point
+              </label>
+              <button
+                type="button"
+                onClick={handleUseCurrentGps}
+                className="text-[10px] text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-1 bg-purple-950/60 px-2 py-0.5 rounded-lg border border-purple-800/40"
+              >
+                <Locate className="w-3 h-3 text-emerald-400" /> Use GPS
+              </button>
+            </div>
             <div className="relative">
               <input
                 type="text"
                 value={origin}
                 onChange={(e) => setOrigin(e.target.value)}
                 placeholder="Current location or address..."
-                className="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition"
+                className="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition pr-8"
               />
             </div>
+          </div>
+
+          {/* Swap Locations Button */}
+          <div className="flex justify-center -my-1">
+            <button
+              type="button"
+              onClick={handleSwapLocations}
+              className="p-1.5 bg-slate-800 hover:bg-purple-900/60 text-purple-300 rounded-full border border-slate-700 shadow transition"
+              title="Swap Origin and Destination"
+            >
+              <ArrowUpDown className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           {/* Destination */}
@@ -143,7 +174,7 @@ export const SafeRoutePlanner: React.FC<SafeRoutePlannerProps> = ({
                 type="text"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                placeholder="Enter destination..."
+                placeholder="Enter destination (e.g. City Center, University, Station)..."
                 className="w-full bg-slate-950 border border-slate-800 focus:border-purple-500 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition"
               />
             </div>

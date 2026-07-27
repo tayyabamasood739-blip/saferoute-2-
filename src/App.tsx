@@ -111,6 +111,9 @@ export default function App() {
   // Trip Start / Stop
   const handleStartTrip = (route: RouteOption, origin: string, destination: string) => {
     setActiveRoute(route);
+    const startLat = route.originCoords ? route.originCoords[0] : userLat;
+    const startLng = route.originCoords ? route.originCoords[1] : userLng;
+
     setActiveTrip({
       isTraveling: true,
       originName: origin,
@@ -120,9 +123,15 @@ export default function App() {
       estimatedArrival: route.duration,
       liveSharingActive: true,
       progressPercent: 10,
-      currentLat: userLat,
-      currentLng: userLng,
+      currentLat: startLat,
+      currentLng: startLng,
     });
+
+    if (route.originCoords) {
+      setUserLat(route.originCoords[0]);
+      setUserLng(route.originCoords[1]);
+    }
+
     setActiveTab('map');
   };
 

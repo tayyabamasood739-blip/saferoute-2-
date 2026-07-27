@@ -1,0 +1,39 @@
+{
+  "short_name": "SafeRoute",
+  "name": "SafeRoute - Women's Safety & AI Navigation",
+  "description": "AI-powered safety navigation and real-time emergency protection app for women.",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "display": "standalone",
+  "orientation": "portrait",
+  "categories": ["navigation", "safety", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Calculate Safe Route",
+      "short_name": "Safe Route",
+      "description": "Find safest illuminated path",
+      "url": "/?tab=safe-route"
+    },
+    {
+      "name": "Trigger Emergency SOS",
+      "short_name": "SOS Alert",
+      "description": "Dispatch live GPS alert to emergency contacts",
+      "url": "/?action=sos"
+    }
+  ]
+}

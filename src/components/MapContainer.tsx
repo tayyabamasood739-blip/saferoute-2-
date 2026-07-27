@@ -209,27 +209,69 @@ export const MapContainer: React.FC<MapContainerProps> = ({
       });
     }
 
-    // 4. Draw Active Route Polyline if present
+    // 4. Draw Active Route Polyline & Start/Destination Pins if present
     if (polylineRef.current) {
       polylineRef.current.remove();
       polylineRef.current = null;
     }
 
     if (activeRoute && activeRoute.pathCoordinates && activeRoute.pathCoordinates.length > 0) {
-      const routeLine = L.polyline(activeRoute.pathCoordinates, {
+      const coords = activeRoute.pathCoordinates;
+      const startPt: [number, number] = activeRoute.originCoords || coords[0];
+      const destPt: [number, number] = activeRoute.destinationCoords || coords[coords.length - 1];
+
+      // Start Pin (Green)
+      const startIcon = L.divIcon({
+        className: 'custom-start-marker',
+        html: `
+          <div class="relative flex items-center justify-center w-8 h-8">
+            <div class="w-7 h-7 bg-emerald-600 border-2 border-white rounded-full flex items-center justify-center shadow-xl text-white font-bold text-xs">
+              S
+            </div>
+          </div>
+        `,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+      });
+
+      const startMarker = L.marker(startPt, { icon: startIcon })
+        .bindPopup(`<div class="p-1 font-bold text-slate-900 text-xs text-center">🏁 Start Location</div>`);
+      markersGroup.addLayer(startMarker);
+
+      // Destination Pin (Red)
+      const destIcon = L.divIcon({
+        className: 'custom-dest-marker',
+        html: `
+          <div class="relative flex items-center justify-center w-8 h-8">
+            <div class="w-7 h-7 bg-rose-600 border-2 border-white rounded-full flex items-center justify-center shadow-xl text-white font-bold text-xs">
+              D
+            </div>
+          </div>
+        `,
+        iconSize: [28, 28],
+        iconAnchor: [14, 14],
+      });
+
+      const destMarker = L.marker(destPt, { icon: destIcon })
+        .bindPopup(`<div class="p-1 font-bold text-slate-900 text-xs text-center">🎯 Destination</div>`);
+      markersGroup.addLayer(destMarker);
+
+      // Route Polyline
+      const routeLine = L.polyline(coords, {
         color: activeRoute.safetyScore >= 90 ? '#10b981' : activeRoute.safetyScore >= 75 ? '#3b82f6' : '#f59e0b',
         weight: 6,
-        opacity: 0.85,
+        opacity: 0.9,
         lineCap: 'round',
         lineJoin: 'round',
-        dashArray: '10, 8',
+        dashArray: '8, 6',
       }).addTo(map);
 
       polylineRef.current = routeLine;
 
-      // Fit bounds to show entire route
-      const bounds = L.latLngBounds(activeRoute.pathCoordinates);
-      map.fitBounds(bounds, { padding: [40, 40] });
+      // Fit bounds to show entire route + start/dest pins
+      const allPoints: [number, number][] = [...coords, startPt, destPt];
+      const bounds = L.latLngBounds(allPoints);
+      map.fitBounds(bounds, { padding: [50, 50] });
     }
 
   }, [userLat, userLng, emergencyServices, unsafeReports, activeRoute, activeFilter]);

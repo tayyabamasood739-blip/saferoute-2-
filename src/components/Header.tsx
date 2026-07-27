@@ -1,5 +1,5 @@
-import React from 'react';
-import { Shield, Bell, Mic, Battery, Zap, AlertCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Shield, Bell, Mic, Battery, Zap, AlertCircle, Download } from 'lucide-react';
 import { TabType, UserProfile } from '../types';
 
 interface HeaderProps {
@@ -19,6 +19,33 @@ export const Header: React.FC<HeaderProps> = ({
   isVoiceListening,
   onOpenSOS,
 }) => {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isInstallable, setIsInstallable] = useState(false);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
+  const handleInstallPWA = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setIsInstallable(false);
+      setDeferredPrompt(null);
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-xl border-b border-purple-900/30 px-4 py-3 text-white">
       <div className="max-w-md mx-auto flex items-center justify-between">
@@ -39,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({
                 SafeRoute
               </span>
               <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-purple-900/60 text-purple-300 border border-purple-700/50">
-                AI 3.6
+                PWA
               </span>
             </div>
             
@@ -58,7 +85,19 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Controls */}
         <div className="flex items-center gap-2">
-          
+
+          {/* PWA Install Button if available */}
+          {isInstallable && (
+            <button
+              onClick={handleInstallPWA}
+              className="px-2.5 py-1.5 bg-purple-900/80 hover:bg-purple-800 text-purple-200 border border-purple-500/50 rounded-xl text-xs font-bold flex items-center gap-1 shadow transition animate-bounce"
+              title="Install SafeRoute PWA App"
+            >
+              <Download className="w-3.5 h-3.5 text-purple-300" />
+              <span>Install App</span>
+            </button>
+          )}
+
           {/* Voice Keyword Indicator */}
           <button
             onClick={() => onNavigate('settings')}
