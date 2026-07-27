@@ -3,35 +3,96 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #020617;
+    color: #f8fafc;
   }
   h1, h2, h3, h4, .font-heading {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   }
 }
 
+/* Glassmorphism Design System */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(30, 27, 75, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.5);
+}
+
+.glass-card-purple {
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.4) 0%, rgba(30, 27, 75, 0.7) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+.glass-card-rose {
+  background: linear-gradient(135deg, rgba(136, 19, 55, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+
+/* Glow Effects */
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.4);
+}
+
+.glow-rose {
+  box-shadow: 0 0 30px -5px rgba(244, 63, 94, 0.5);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+.glow-blue {
+  box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
+}
+
+/* Gradient Text */
+.gradient-text-purple {
+  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-rose {
+  background: linear-gradient(135deg, #ffffff 0%, #fca5a5 50%, #fb7185 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
 @keyframes pulse-ring {
   0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0.7);
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
   }
   70% {
-    transform: scale(1.15);
-    box-shadow: 0 0 0 20px rgba(109, 40, 217, 0);
+    transform: scale(1.08);
+    box-shadow: 0 0 0 18px rgba(168, 85, 247, 0);
   }
   100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(109, 40, 217, 0);
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
   }
 }
 
 @keyframes pulse-danger {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.8);
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.85);
   }
   50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 0 25px rgba(225, 29, 72, 0);
+    transform: scale(1.04);
+    box-shadow: 0 0 0 22px rgba(225, 29, 72, 0);
   }
   100% {
     transform: scale(1);
@@ -39,30 +100,56 @@
   }
 }
 
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
 .animate-pulse-ring {
-  animation: pulse-ring 2s infinite;
+  animation: pulse-ring 2.2s infinite;
 }
 
 .animate-pulse-danger {
-  animation: pulse-danger 1.5s infinite;
+  animation: pulse-danger 1.6s infinite;
 }
 
-/* Custom Leaflet Map styling tweaks */
+.animate-float {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Custom Leaflet Map styling */
 .leaflet-container {
-  background-color: #0f172a !important;
-  font-family: inherit;
+  background-color: #020617 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   z-index: 1;
 }
 
 .leaflet-popup-content-wrapper {
-  background: #1e1b4b !important;
-  color: #f1f5f9 !important;
-  border-radius: 0.75rem !important;
-  border: 1px solid #4338ca !important;
-  padding: 4px !important;
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-radius: 1rem !important;
+  border: 1px solid rgba(147, 51, 234, 0.4) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  padding: 6px !important;
 }
 
 .leaflet-popup-tip {
-  background: #1e1b4b !important;
+  background: #0f172a !important;
+  border: 1px solid rgba(147, 51, 234, 0.4) !important;
 }
-

@@ -200,42 +200,43 @@ export const SafeRoutePlanner: React.FC<SafeRoutePlannerProps> = ({
     <div className="space-y-6 pb-20">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-purple-900/80 via-indigo-900/80 to-slate-900 border border-purple-700/50 rounded-3xl p-5 shadow-xl">
+      <div className="glass-card-purple rounded-3xl p-5 shadow-2xl glow-purple relative overflow-hidden">
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="flex items-center gap-2 text-purple-300 font-bold text-xs uppercase tracking-wider mb-1">
-          <Sparkles className="w-4 h-4 text-purple-400" /> AI Safe Route Generator
+          <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" /> AI Safe Route Generator
         </div>
-        <h2 className="font-heading font-extrabold text-xl text-white">Smart Safety Path Planning</h2>
-        <p className="text-slate-300 text-xs mt-1">
+        <h2 className="font-heading font-black text-xl text-white tracking-tight">Smart Safety Path Planning</h2>
+        <p className="text-slate-300 text-xs mt-1 leading-relaxed">
           Evaluates street lamp illumination, CCTV density, crime reports, and active community warnings for personalized risk minimization.
         </p>
       </div>
 
       {/* Active Trip Banner if running */}
       {activeTrip.isTraveling && activeTrip.currentRoute && (
-        <div className="bg-emerald-950/90 border border-emerald-500/60 rounded-3xl p-5 text-white shadow-xl animate-pulse-ring">
+        <div className="glass-card border border-emerald-500/60 rounded-3xl p-5 text-white shadow-2xl animate-pulse-ring glow-emerald">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-800 text-emerald-200 border border-emerald-600 flex items-center gap-1">
+            <span className="text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/60 flex items-center gap-1.5 shadow">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> LIVE TRIP TRACKING ACTIVE
             </span>
-            <span className="text-xs text-emerald-300 font-medium">ETA: {activeTrip.estimatedArrival}</span>
+            <span className="text-xs text-emerald-300 font-bold">ETA: {activeTrip.estimatedArrival}</span>
           </div>
 
-          <div className="font-bold text-base text-white">{activeTrip.currentRoute.name}</div>
-          <p className="text-xs text-emerald-200 mt-0.5">
+          <div className="font-heading font-black text-base text-white">{activeTrip.currentRoute.name}</div>
+          <p className="text-xs text-emerald-200 mt-0.5 font-medium">
             Destination: {activeTrip.destinationName} ({activeTrip.currentRoute.distance})
           </p>
 
-          <div className="mt-3 bg-emerald-900/60 rounded-xl p-2.5 text-xs text-emerald-100 flex items-center justify-between">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="mt-3.5 bg-emerald-950/80 rounded-2xl p-3 text-xs text-emerald-100 flex items-center justify-between border border-emerald-700/50">
+            <span className="flex items-center gap-2 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               Contacts auto-notified with live GPS link
             </span>
-            <span className="font-bold text-emerald-300">{activeTrip.currentRoute.safetyScore}% Safe</span>
+            <span className="font-extrabold text-emerald-300 text-sm">{activeTrip.currentRoute.safetyScore}% Safe</span>
           </div>
 
           <button
             onClick={onEndTrip}
-            className="mt-4 w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl shadow transition"
+            className="mt-4 w-full py-3 bg-gradient-to-r from-rose-600 via-red-600 to-rose-500 hover:from-rose-500 hover:to-red-500 text-white font-heading font-bold text-xs rounded-xl shadow-lg transition active:scale-98 cursor-pointer"
           >
             End Journey Safely
           </button>
@@ -243,7 +244,7 @@ export const SafeRoutePlanner: React.FC<SafeRoutePlannerProps> = ({
       )}
 
       {/* Input Form */}
-      <form onSubmit={handleFetchRoutes} className="bg-slate-900 border border-purple-900/40 rounded-3xl p-5 space-y-4 shadow-xl">
+      <form onSubmit={handleFetchRoutes} className="glass-card rounded-3xl p-5 space-y-4 shadow-2xl">
         
         <div className="space-y-3">
           {/* Origin */}

@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-xl border-b border-purple-900/30 px-4 py-3 text-white">
+    <header className="sticky top-0 z-40 glass-panel border-b border-purple-900/30 px-4 py-3 text-white">
       <div className="max-w-md mx-auto flex items-center justify-between">
         
         {/* Brand Logo & Status */}
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => onNavigate('home')} 
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 shadow-lg shadow-purple-900/40 group-hover:scale-105 transition-transform border border-purple-400/30">
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 shadow-lg glow-purple group-hover:scale-105 transition-transform border border-purple-300/40">
             <Shield className="w-5 h-5 text-white fill-purple-200/20" />
             <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-950 animate-pulse"></span>
           </div>

@@ -19,7 +19,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onNavigate, onO
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-2xl border-t border-purple-900/30 px-2 py-2">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 glass-panel border-t border-purple-900/40 px-2 py-2.5 shadow-2xl">
       <div className="max-w-md mx-auto flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -28,14 +28,17 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onNavigate, onO
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all duration-200 ${
+              className={`flex flex-col items-center justify-center py-1.5 px-3 rounded-2xl transition-all duration-300 relative ${
                 isActive
-                  ? 'text-purple-300 font-bold bg-purple-900/30 border border-purple-700/50 scale-105'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50'
+                  ? 'text-purple-200 font-bold bg-purple-950/80 border border-purple-500/60 scale-105 glow-purple'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
               }`}
             >
-              <Icon className={`w-5 h-5 ${isActive ? 'text-purple-400' : 'text-slate-400'}`} />
-              <span className="text-[10px] mt-0.5 tracking-tight whitespace-nowrap">{item.label}</span>
+              <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'text-purple-400 scale-110' : 'text-slate-400'}`} />
+              <span className="text-[10px] mt-0.5 tracking-tight font-medium whitespace-nowrap">{item.label}</span>
+              {isActive && (
+                <span className="absolute -top-1 w-2 h-0.5 rounded-full bg-purple-400"></span>
+              )}
             </button>
           );
         })}
